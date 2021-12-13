@@ -32,28 +32,34 @@
       const TextLength = inputval.length;
       let resultText = [];
       // leaves loop
-      for (let i = 0; i < TextLength / 2; i++) {
+      for (let i = 0; i <= TextLength - 1; i++) {
         let line = "";
-        for (let j = 0, k = 0; j < TextLength; j++) {
-          if (j >= TextLength / 2 - 1 - i && j <= TextLength / 2 + i) {
-            line = line + inputval[k];
-            k += 1;
-          } else {
-            line = line + " ";
-          }
+        // for (let j = 0, k = 0; j < TextLength; j++) {
+        //   if (j >= TextLength / 2 - 1 - i && j <= TextLength / 2 + i) {
+        //     line = line + inputval[k];
+        //     k += 1;
+        //   } else {
+        //     line = line + " ";
+        //   }
+        // }
+        for (let j = 0, k = 0; j <= i; j++) {
+          line += inputval[k];
+          k += 1;
         }
         resultText.push(line);
       }
       // tree loop
-      let line = "";
-      for (let i = 0; i <= TextLength; i++) {
-        if (i >= TextLength / 2 - 1 && i <= TextLength / 2) {
-          line += inputval[0];
-        } else {
-          line += " ";
-        }
-      }
-      resultText.push(line);
+      // let line = "";
+      // for (let i = 0; i <= TextLength; i++) {
+      //   if (i >= TextLength / 2 - 1 && i <= TextLength / 2) {
+      //     line += inputval[0];
+      //   } else {
+      //     line += " ";
+      //   }
+      // }
+      // resultText.push(line);
+
+      resultText.push(inputval[0]);
       console.log(resultText.join("\n"));
       let outputEL = document.getElementById("output-name");
       outputEL.value = resultText.join("\n");
