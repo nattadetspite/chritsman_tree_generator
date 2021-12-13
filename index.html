@@ -1,0 +1,62 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Christmas name generator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 id="page-title">Generate your<br />Christmas Tree name</h1>
+    <div id="input-wrapper">
+      <input type="text" id="input-name" />
+      <button id="submit">submit</button>
+    </div>
+    <textarea id="output-name" readonly onclick="this.focus();this.select()"></textarea>
+    <footer id="footer">
+      made with <span>&#128151;</span> by
+      <a href="https://www.github.com/nattadetspite" target="_blank">ntd.ctnts</a>
+    </footer>
+  </body>
+  <!-- 
+      *  
+     *** 
+    *****
+  -->
+  <script>
+    var inputval = "";
+    document.getElementById("input-name").addEventListener("input", (e) => {
+      inputval = e.target.value;
+    });
+    document.getElementById("submit").addEventListener("click", () => {
+      const TextLength = inputval.length;
+      let resultText = [];
+      // leaves loop
+      for (let i = 0; i < TextLength / 2; i++) {
+        let line = "";
+        for (let j = 0, k = 0; j < TextLength; j++) {
+          if (j >= TextLength / 2 - 1 - i && j <= TextLength / 2 + i) {
+            line = line + inputval[k];
+            k += 1;
+          } else {
+            line = line + " ";
+          }
+        }
+        resultText.push(line);
+      }
+      // tree loop
+      let line = "";
+      for (let i = 0; i <= TextLength; i++) {
+        if (i >= TextLength / 2 - 1 && i <= TextLength / 2) {
+          line += inputval[0];
+        } else {
+          line += " ";
+        }
+      }
+      resultText.push(line);
+      console.log(resultText.join("\n"));
+      let outputEL = document.getElementById("output-name");
+      outputEL.value = resultText.join("\n");
+    });
+  </script>
+</html>
